@@ -1,0 +1,11 @@
+#HTACCESS for Prezi REST API 
+<IfModule mod_rewrite.c>
+RewriteEngine On
+#RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteRule ^(.*)$ token.php [QSA,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule preziAPI/(.*)$ preziAPI/v1/preziAPI.php?request=$1 [QSA,NC,L]
+#RewriteRule preziAPI/token/(.*)$ preziAPI/v1/preziAPI.php?request=$1 [QSA,NC,L]
+</IfModule>
